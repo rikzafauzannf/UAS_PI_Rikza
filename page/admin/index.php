@@ -7,7 +7,7 @@
                     <div class="card border border-0 shadow" id="datatransaksi">
                         <div class="card-body">
                             <table class="table table-bordered table-hover">
-                                <thead class="table-light">
+                                <thead>
                                     <tr>
                                         <th scope="col">#</th>
                                         <th scope="col">No.TRX</th>
@@ -107,8 +107,8 @@
         </section>
         <!-- data mobil dan pelanggan -->
         <section class="my-4">
-            <div class="row">
-                <div class="col-md-8">
+            <div class="row g-3">
+                <div class="col-md-12">
                     <div class="card border border-0 shadow" id="dataMobil">
                         <div class="card-body">
                             <div class="w-100 d-flex justify-content-between align-items-center mb-3">
@@ -148,6 +148,40 @@
                                     <?php
                                     endwhile;
                                     ?>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="card border border-0 shadow" id="dataPelanggan">
+                        <div class="card-body">
+                            <h3 class="text-secondary fw-bold">Data Pelanggan</h3>
+
+                            <table class="table table-bordered table-hover">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">#</th>
+                                        <th scope="col">NIK</th>
+                                        <th scope="col">Nama</th>
+                                        <th scope="col">No.Hp</th>
+                                        <th scope="col">Alamat</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php
+                                    $queryPelanggan = mysqli_query($link, "SELECT * FROM tbl_pelanggan_rikza");
+                                    $no = 1;
+                                    while ($row = mysqli_fetch_assoc($queryPelanggan)) :
+                                    ?>
+                                        <tr>
+                                            <th scope="row"><?= $no++ ?></th>
+                                            <td><?= $row['nik_ktp_rikza'] ?></td>
+                                            <td><?= $row['nama_rikza'] ?></td>
+                                            <td><?= $row['no_hp_rikza'] ?></td>
+                                            <td><?= $row['alamat_rikza'] ?></td>
+                                        </tr>
+                                    <?php endwhile; ?>
                                 </tbody>
                             </table>
                         </div>

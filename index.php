@@ -30,7 +30,14 @@
 
                     </div>
                     <div class="navbar-text">
-                        <h6 class="text-muted mb-0">ME: <?php echo $_SESSION['username'] ?></h6>
+                        <div class="dropdown">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <?php echo $_SESSION['username'] ?>
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="?logic=logic&logout=logout">Logout</a></li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -40,7 +47,7 @@
     ?>
         <nav class="navbar navbar-expand-lg bg-body-tertiary">
             <div class="container-fluid">
-                <a class="navbar-brand" href="#">RentalMobil<sup class="text-danger">user</sup></a>
+                <a class="navbar-brand fw-bold" href="#">RentalMobil<sup class="text-danger">Dealer</sup></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -52,7 +59,14 @@
                         <a class="nav-link disabled" aria-disabled="true">Disabled</a>
                     </div>
                     <div class="navbar-text">
-                        <h6 class="text-muted mb-0">ME: <?php echo $_SESSION['username'] ?></h6>
+                        <div class="dropdown">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <?php echo $_SESSION['username'] ?>
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="?logic=logic&logout=logout">Logout</a></li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>

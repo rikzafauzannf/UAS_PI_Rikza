@@ -4,7 +4,7 @@ include("config/connect.php");
 if (isset($_POST['insert'])) {
     $username       = $_POST['username'];
     $namaLengkap    = $_POST['namaLengkap'];
-    $password       = $_POST['password'];
+    $password       = md5($_POST['password']);
     $level          = $_POST['level'];
 
     $query = mysqli_query($link, "INSERT INTO `tbl_user_rikza`(`username_rikza`, `password_rikza`, `nama_lengkap_rikza`, `level_rikza`) VALUES ('$username','$password','$namaLengkap','$level')");
