@@ -5,7 +5,11 @@ if ($_GET['role'] == "admin") {
     include("page/admin/index.php");
 } elseif ($_GET['role'] == "user") {
     // user
-    include("page/public/index.php");
+    if ($_GET['rental'] == "dataPelanggan") {
+        echo $_GET['plat'];
+    } else {
+        include("page/public/index.php");
+    }
 } elseif ($_GET['logic'] == "logic") { // logic
     if ($_GET['login'] == "login") { // login
         include("./logic/login.php");

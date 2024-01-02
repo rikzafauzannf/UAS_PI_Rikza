@@ -19,7 +19,7 @@
                                 <div class="col-md-4 fs-5"><?= $row['brand_mobil_rikza'] ?></div>
                                 <div class="col-md-4 fs-5"><?= $row['tipe_transmisi_rikza'] ?></div>
                                 <div class="col-md-12 mt-3">
-                                    <a href="" class="btn btn-md btn-primary w-100">Rental</a>
+                                    <a href="?role=user&rental=dataPelanggan&plat=<?= $row['no_plat_rikza'] ?>" class="btn btn-md btn-primary w-100">Rental</a>
                                 </div>
                             </div>
                         </div>
