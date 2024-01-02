@@ -23,9 +23,11 @@
                 <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                     <div class="navbar-nav mx-auto">
                         <a class="nav-link active" aria-current="page" href="#">Home</a>
-                        <a class="nav-link" href="#">Features</a>
-                        <a class="nav-link" href="#">Pricing</a>
-                        <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+                        <a class="nav-link" href="#datatransaksi">Data Transaksi</a>
+                        <a class="nav-link" href="#dataUser">Data User</a>
+                        <a class="nav-link" href="#dataMobil">Data mobil</a>
+                        <a class="nav-link" href="#dataPelanggan">Data Pelanggan</a>
+
                     </div>
                     <div class="navbar-text">
                         <h6 class="text-muted mb-0">ME: <?php echo $_SESSION['username'] ?></h6>
