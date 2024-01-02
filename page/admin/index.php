@@ -123,12 +123,32 @@
             </div>
             <div class="modal-body">
                 <form action="?logic=logic&crud=adduser" method="post">
-                    <label for="" class="form-label"></label>
-                </form>
+                    <div class="row g-3">
+                        <div class="col-md-12">
+                            <label for="username" class="form-label">Username</label>
+                            <input type="text" name="username" id="username" placeholder="Username" class="form-control">
+                        </div>
+                        <div class="col-md-12">
+                            <label for="namaLengkap" class="form-label">Nama Lengkap</label>
+                            <input type="text" name="namaLengkap" id="namaLengkap" placeholder="Nama Lengkap" class="form-control">
+                        </div>
+                        <div class="col-md-12">
+                            <label for="password" class="form-label">Password</label>
+                            <input type="password" name="password" id="password" placeholder="password***" class="form-control">
+                        </div>
+                        <div class="col-md-12">
+                            <select name="level" class="form-select">
+                                <option value="admin">Admin</option>
+                                <option value="user">User</option>
+                            </select>
+                        </div>
+                    </div>
+
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Understood</button>
+                <button type="submit" name="insert" class="btn btn-primary">Simpan</button>
+                </form>
             </div>
         </div>
     </div>
