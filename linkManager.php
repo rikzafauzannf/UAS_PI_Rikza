@@ -6,7 +6,7 @@ if ($_GET['role'] == "admin") {
 } elseif ($_GET['role'] == "user") {
     // user
     if ($_GET['rental'] == "dataPelanggan") {
-        echo $_GET['plat'];
+        include("./page/public/rentalStep1.php");
     } else {
         include("page/public/index.php");
     }
