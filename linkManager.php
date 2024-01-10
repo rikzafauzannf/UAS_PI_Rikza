@@ -19,6 +19,8 @@ if ($_GET['role'] == "admin") {
         include("./logic/queryUser.php");
     } elseif ($_GET['crud'] == "deluser") { // delete user
         include("./logic/queryUser.php");
+    } elseif ($_GET['crud'] == "addPenyewa") { // delete user
+        include("./logic/queryUser.php");
     } elseif ($_GET['crud'] == "addMobil") { // add mobil
         include("./logic/queryMobil.php");
     }

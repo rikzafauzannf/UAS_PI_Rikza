@@ -32,7 +32,7 @@
                     <div class="navbar-text">
                         <div class="dropdown">
                             <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <?php echo $_SESSION['username'] ?>
+                                <?php echo $_SESSION['namalengkap'] ?>
                             </button>
                             <ul class="dropdown-menu">
                                 <li><a class="dropdown-item" href="?logic=logic&logout=logout">Logout</a></li>
@@ -61,7 +61,7 @@
                     <div class="navbar-text">
                         <div class="dropdown">
                             <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <?php echo $_SESSION['username'] ?>
+                                <?php echo $_SESSION['namalengkap'] ?>
                             </button>
                             <ul class="dropdown-menu">
                                 <li><a class="dropdown-item" href="?logic=logic&logout=logout">Logout</a></li>
