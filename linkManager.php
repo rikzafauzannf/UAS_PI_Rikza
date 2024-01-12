@@ -19,10 +19,14 @@ if ($_GET['role'] == "admin") {
         include("./logic/queryUser.php");
     } elseif ($_GET['crud'] == "deluser") { // delete user
         include("./logic/queryUser.php");
-    } elseif ($_GET['crud'] == "addPenyewa") { // delete user
+    } elseif ($_GET['crud'] == "addPenyewa") { // add penyewa
         include("./logic/queryUser.php");
     } elseif ($_GET['crud'] == "addMobil") { // add mobil
         include("./logic/queryMobil.php");
+    } elseif ($_GET['crud'] == "deleteMobil") { // delete mobil
+        include("./logic/queryMobil.php");
+    } elseif ($_GET['crud'] == "Rental") { // add mobil
+        include("./logic/queryRental.php");
     }
 } elseif ($_GET['out'] == "trueOut") {
     include("./page/auth/index.php");

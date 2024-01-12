@@ -82,3 +82,55 @@
         </div>
     </div>
 </div>
+
+
+<!-- update Mobil -->
+<!-- Modal -->
+<?php
+
+$queryLoopdata = mysqli_query($link, "SELECT * FROM `tbl_mobil_rikza` ");
+while ($data = mysqli_fetch_assoc($queryLoopdata)) :
+?>
+    <div class="modal fade" id="UpdateMobile<?= str_replace(' ', '', $data['no_plat_rikza']) ?>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="UpdateMobile<?= str_replace(' ', '', $data['no_plat_rikza']) ?>Label" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="UpdateMobile<?= str_replace(' ', '', $data['no_plat_rikza']) ?>Label">Update Data Mobil</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form action="?logic=logic&crud=addMobil" method="post">
+                        <div class="row g-3">
+                            <div class="col-md-12">
+                                <label for="noplat" class="form-label">No-Plat</label>
+                                <input type="text" name="noplat" id="noplat" placeholder="Masukan Nomor Plat Mobil" class="form-control" value="<?= $data['no_plat_rikza'] ?>">
+                            </div>
+                            <div class="col-md-12">
+                                <label for="mobil" class="form-label">Mobil</label>
+                                <input type="text" name="mobil" id="mobil" placeholder="Masukan Nama Mobil" class="form-control">
+                            </div>
+                            <div class="col-md-12">
+                                <label for="brand" class="form-label">Brand</label>
+                                <input type="text" name="brand" id="brand" placeholder="Masukan Brand Mobil" class="form-control">
+                            </div>
+                            <div class="col-md-12">
+                                <label for="transmisi" class="form-label">Type Transmisi</label>
+                                <select name="transmisi" id="transmisi" class="form-select">
+                                    <option value="Manual">Manual</option>
+                                    <option value="Matic">Matic</option>
+                                </select>
+                            </div>
+                        </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" name="insert" class="btn btn-primary">Simpan</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+<?php
+endwhile;
+?>

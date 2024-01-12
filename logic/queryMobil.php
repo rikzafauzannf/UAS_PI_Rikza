@@ -14,4 +14,13 @@ if (isset($_POST['insert'])) {
     } else {
         header("Location: http://localhost:8000/UAS_PI_Rikza/?role=admin");
     }
+} elseif (isset($_GET['crud']) && $_GET['crud'] == "deleteMobil") {
+    $idmbx = $_GET['idmbx'];
+    $queryDel = mysqli_query($link, "DELETE FROM `tbl_mobil_rikza` WHERE no_plat_rikza = '$idmbx' ");
+
+    if (!$query) {
+        die("error :" + mysqli_errno($link));
+    } else {
+        header("Location: http://localhost:8000/UAS_PI_Rikza/?role=admin");
+    }
 }

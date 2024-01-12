@@ -1,5 +1,19 @@
+<?php
+session_start();
+$role = $_SESSION['role'];
+if (!$role === "admin") {
+    header("Location: http://localhost:8000/UAS_PI_Rikza/");
+}
+?>
+<div class="Hero shadow d-flex align-items-center">
+    <div class="container">
+        <h3>Selamat Datang</h3>
+        <h1 class="fw-bold"><?= $_SESSION['namalengkap'] ?></h1>
+        <p>Selamat Bekerja untuk kemajuan dealer <b>RentalMobil</b></p>
+    </div>
+</div>
 <main class="my-4">
-    <div class="container-fluid">
+    <div class="container">
         <h3>DATA RENTAL MOBIL (<?= $_SESSION['username'] ?>)</h3>
         <section class="my-2">
             <div class="row">
@@ -141,8 +155,8 @@
                                             <td><?= $row['brand_mobil_rikza'] ?></td>
                                             <td><?= $row['tipe_transmisi_rikza'] ?></td>
                                             <td>
-                                                <a href="" class="btn btn-sm btn-warning">Update</a>
-                                                <a href="" class="btn btn-sm btn-danger">Delete</a>
+                                                <a href="#UpdateMobile<?= str_replace(' ', '', $row['no_plat_rikza']) ?>" data-bs-toggle="modal" class="btn btn-sm btn-warning">Update</a>
+                                                <a href="?logic=logic&crud=deleteMobil&idmbx=<?= $row['no_plat_rikza'] ?>" class="btn btn-sm btn-danger">Delete</a>
                                             </td>
                                         </tr>
                                     <?php

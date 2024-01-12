@@ -3,8 +3,8 @@ include("config/connect.php");
 $plat = $_GET['plat'];
 ?>
 
-<main class="my-4">
-    <div class="container-fluid">
+<main class="my-5">
+    <div class="container">
         <div class="row">
             <div class="col-md-6">
                 <?php
@@ -31,9 +31,84 @@ $plat = $_GET['plat'];
                 <div class="card border border-0 shadow">
                     <div class="card-body">
                         <h5>Form Rental Mobil</h5>
-                        <form action="" method="post">
-                            
+                        <form action="?logic=logic&crud=Rental" method="post">
+                            <div class="row g-3">
+                                <div class="col-md-12">
+                                    <label for="noTRX" class="form-label">No.Transaksi</label>
+                                    <input type="text" name="noTRX" id="noTRX" class="form-control" value="RKZ-<?= str_replace(' ', '', $plat) ?>" readonly>
+                                </div>
+                                <div class="col-md-12">
+                                    <label for="pelanggan">Pelanggan</label>
+                                    <select name="pelanggan" id="pelanggan" class="form-select">
+                                        <?php
+                                        $getDataPelanggan = mysqli_query($link, "SELECT * FROM `tbl_pelanggan_rikza`");
+                                        while ($items = mysqli_fetch_assoc($getDataPelanggan)) :
+                                        ?>
+                                            <option value="<?= $items['nik_ktp_rikza'] ?>">
+                                                <?= $items['nama_rikza'] ?> | <?= $items['no_hp_rikza'] ?>
+                                            </option>
+                                        <?php endwhile; ?>
+                                    </select>
+                                </div>
+                                <div class="col-md-12">
+                                    <label for="noPlat" class="form-label">NoPlat</label>
+                                    <input type="text" class="form-control" name="noPlat" id="noPlat" aria-describedby="noPlat" value="<?= $plat ?>" readonly>
+                                    <div id="noPlat" class="form-text">Pastikan Nomor Plat Sama</div>
+                                </div>
+                                <div class="col-md-12">
+                                    <label for="tglRental" class="form-label">Tanggal Rental</label>
+                                    <input type="date" name="tglRental" id="tglRental" class="form-control">
+                                </div>
+                                <div class="col-md-12">
+                                    <label for="JamRental" class="form-label">Jam Rental</label>
+                                    <input type="time" class="form-control" name="JamRental" id="noPlat" min="09:00" max="18:00" aria-describedby="noPlat">
+                                    <div id="noPlat" class="form-text">Office hours are 9am to 6pm</div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="harga" class="form-label">Harga</label>
+                                    <input type="number" name="harga" id="harga" min="0" class="form-control" oninput="hitungTotal()">
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="lama" class="form-label">Lama</label>
+                                    <div class="input-group">
+                                        <input type="number" name="lama" id="lama" min="0" class="form-control" oninput="hitungTotal()">
+                                        <label class="input-group-text" for="lama">Hari</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <label for="total" class="form-label">Total</label>
+                                    <input type="text" name="total" id="total" class="form-control" value="" readonly>
+                                </div>
+                                <div class="col-md-12">
+                                    <button type="submit" name="rental" class="btn btn-primary btn-md w-100">Simpan Data</button>
+                                </div>
+                            </div>
                         </form>
+                        <script>
+                            function hitungTotal() {
+                                // Mengambil nilai harga tanpa simbol IDR
+                                var harga = document.getElementById('harga').value.replace('IDR ', '').replace(',', '');
+
+                                // Mengubah nilai harga menjadi angka
+                                harga = parseFloat(harga) || 0;
+
+                                var lama = document.getElementById('lama').value;
+                                var total = harga * lama;
+
+                                // Mengubah nilai total menjadi format IDR
+                                var formattedTotal = formatIDR(total);
+
+                                // Menetapkan nilai total yang diformat ke elemen input dengan id 'total'
+                                document.getElementById('total').value = formattedTotal;
+                            }
+
+                            function formatIDR(number) {
+                                return new Intl.NumberFormat('id-ID', {
+                                    style: 'currency',
+                                    currency: 'IDR'
+                                }).format(number);
+                            }
+                        </script>
                     </div>
                 </div>
             </div>

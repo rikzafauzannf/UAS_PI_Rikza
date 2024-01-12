@@ -38,7 +38,7 @@ if (isset($_POST['insert'])) {
         $queryAdd = mysqli_query($link, "INSERT INTO `tbl_pelanggan_rikza`(`nik_ktp_rikza`, `nama_rikza`, `no_hp_rikza`, `alamat_rikza`) VALUES ('$nik','$nama','$noHP','$alamat')");
 
         if (!$queryAdd) {
-            die("Error: " . mysqli_error($link));
+            die("Error: " + mysqli_error($link));
         } else {
             header("Location: http://localhost:8000/UAS_PI_Rikza/?role=user&rental=dataPelanggan&plat=" . $platNav);
         }

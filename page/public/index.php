@@ -1,6 +1,20 @@
-<main class="my-4">
-    <div class="container-fluid">
-        <h2 class="fw-bold">-Mobil Ready</h2>
+<?php
+session_start();
+$role = $_SESSION['role'];
+if (!$role === "user") {
+    header("Location: http://localhost:8000/UAS_PI_Rikza/");
+}
+?>
+<div class="Hero shadow d-flex align-items-center">
+    <div class="container">
+        <h3>Selamat Datang</h3>
+        <h1 class="fw-bold"><?= $_SESSION['namalengkap'] ?></h1>
+        <p>Selamat Bekerja untuk kemajuan dealer <b>RentalMobil</b></p>
+    </div>
+</div>
+<main class="my-5">
+    <div class="container">
+        <h2 class="fw-bold">*List Mobil</h2>
         <div class="row">
             <?php
             include("config/connect.php");
@@ -24,7 +38,7 @@
                             </div>
                         </div>
                     </div>
-                    
+
                 </div>
             <?php endwhile; ?>
         </div>
