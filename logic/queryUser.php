@@ -12,7 +12,7 @@ if (isset($_POST['insert'])) {
     if (!$query) {
         die("error :" + mysqli_errno($link));
     } else {
-        header("Location: http://localhost:8000/UAS_PI_Rikza/?role=admin");
+        header("Location: ?role=admin");
     }
 } elseif (isset($_POST['dataPengguna'])) {
     $nik    = $_POST['nik'];
@@ -40,7 +40,7 @@ if (isset($_POST['insert'])) {
         if (!$queryAdd) {
             die("Error: " + mysqli_error($link));
         } else {
-            header("Location: http://localhost:8000/UAS_PI_Rikza/?role=user&rental=dataPelanggan&plat=" . $platNav);
+            header("Location: ?role=user&rental=dataPelanggan&plat=" . $platNav);
         }
     }
 } elseif (isset($_GET['crud']) && $_GET['crud'] == "deluser") {
@@ -50,6 +50,6 @@ if (isset($_POST['insert'])) {
     if (!$query) {
         die("error :" + mysqli_errno($link));
     } else {
-        header("Location: http://localhost:8000/UAS_PI_Rikza/?role=admin");
+        header("Location: ?role=admin");
     }
 }

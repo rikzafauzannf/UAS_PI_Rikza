@@ -17,9 +17,9 @@ if ($data) {
         $_SESSION['role']          = $data['level_rikza'];
 
         if ($data['level_rikza'] == "admin") {
-            header("Location: http://localhost:8000/UAS_PI_Rikza/?role=admin");
+            header("location: ?role=admin");
         } elseif ($data['level_rikza'] == "user") {
-            header("Location: http://localhost:8000/UAS_PI_Rikza/?role=user");
+            header("location: ?role=user");
         }
 
         exit();

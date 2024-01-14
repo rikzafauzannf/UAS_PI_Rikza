@@ -12,7 +12,22 @@ if (isset($_POST['insert'])) {
     if (!$query) {
         die("error :" + mysqli_errno($link));
     } else {
-        header("Location: http://localhost:8000/UAS_PI_Rikza/?role=admin");
+        header("Location: ?role=admin");
+    }
+} elseif (isset($_POST['edit'])) {
+    $idPlat = $_POST['idPlat'];
+    $plat   = $_POST['noplat'];
+    $mobil  = $_POST['mobil'];
+    $brand  = $_POST['brand'];
+    $type   = $_POST['transmisi'];
+
+    $queryedit = mysqli_query($link, "UPDATE `tbl_mobil_rikza` SET `no_plat_rikza` = '$plat', `nama_mobil_rikza` = '$mobil', `brand_mobil_rikza` = '$brand', `tipe_transmisi_rikza` = '$type' WHERE `no_plat_rikza` = '$idPlat'");
+
+    if (!$queryedit) {
+        die("error :" . mysqli_errno($link));
+    } else {
+        header("Location: ?role=admin");
+        exit();
     }
 } elseif (isset($_GET['crud']) && $_GET['crud'] == "deleteMobil") {
     $idmbx = $_GET['idmbx'];
@@ -21,6 +36,6 @@ if (isset($_POST['insert'])) {
     if (!$query) {
         die("error :" + mysqli_errno($link));
     } else {
-        header("Location: http://localhost:8000/UAS_PI_Rikza/?role=admin");
+        header("Location: ?role=admin");
     }
 }

@@ -35,7 +35,7 @@ $plat = $_GET['plat'];
                             <div class="row g-3">
                                 <div class="col-md-12">
                                     <label for="noTRX" class="form-label">No.Transaksi</label>
-                                    <input type="text" name="noTRX" id="noTRX" class="form-control" value="RKZ-<?= str_replace(' ', '', $plat) ?>" readonly>
+                                    <input type="text" name="noTRX" id="noTRX" class="form-control" value="RKZ-<?= str_replace(' ', '', $plat) . date('H-i-s') ?>" readonly="readonly">
                                 </div>
                                 <div class="col-md-12">
                                     <label for="pelanggan">Pelanggan</label>
@@ -45,14 +45,16 @@ $plat = $_GET['plat'];
                                         while ($items = mysqli_fetch_assoc($getDataPelanggan)) :
                                         ?>
                                             <option value="<?= $items['nik_ktp_rikza'] ?>">
-                                                <?= $items['nama_rikza'] ?> | <?= $items['no_hp_rikza'] ?>
+                                                <?= $items['nama_rikza'] ?>
+                                                |
+                                                <?= $items['no_hp_rikza'] ?>
                                             </option>
                                         <?php endwhile; ?>
                                     </select>
                                 </div>
                                 <div class="col-md-12">
                                     <label for="noPlat" class="form-label">NoPlat</label>
-                                    <input type="text" class="form-control" name="noPlat" id="noPlat" aria-describedby="noPlat" value="<?= $plat ?>" readonly>
+                                    <input type="text" class="form-control" name="noPlat" id="noPlat" aria-describedby="noPlat" value="<?= $plat ?>" readonly="readonly">
                                     <div id="noPlat" class="form-text">Pastikan Nomor Plat Sama</div>
                                 </div>
                                 <div class="col-md-12">
@@ -77,7 +79,7 @@ $plat = $_GET['plat'];
                                 </div>
                                 <div class="col-md-12">
                                     <label for="total" class="form-label">Total</label>
-                                    <input type="text" name="total" id="total" class="form-control" value="" readonly>
+                                    <input type="text" name="total" id="total" class="form-control" value="" readonly="readonly">
                                 </div>
                                 <div class="col-md-12">
                                     <button type="submit" name="rental" class="btn btn-primary btn-md w-100">Simpan Data</button>
@@ -87,26 +89,36 @@ $plat = $_GET['plat'];
                         <script>
                             function hitungTotal() {
                                 // Mengambil nilai harga tanpa simbol IDR
-                                var harga = document.getElementById('harga').value.replace('IDR ', '').replace(',', '');
+                                var harga = document
+                                    .getElementById('harga')
+                                    .value
+                                    .replace('IDR ', '')
+                                    .replace(',', '');
 
                                 // Mengubah nilai harga menjadi angka
                                 harga = parseFloat(harga) || 0;
 
-                                var lama = document.getElementById('lama').value;
+                                var lama = document
+                                    .getElementById('lama')
+                                    .value;
                                 var total = harga * lama;
 
                                 // Mengubah nilai total menjadi format IDR
                                 var formattedTotal = formatIDR(total);
 
                                 // Menetapkan nilai total yang diformat ke elemen input dengan id 'total'
-                                document.getElementById('total').value = formattedTotal;
+                                document
+                                    .getElementById('total')
+                                    .value = formattedTotal;
                             }
 
                             function formatIDR(number) {
-                                return new Intl.NumberFormat('id-ID', {
-                                    style: 'currency',
-                                    currency: 'IDR'
-                                }).format(number);
+                                return new Intl
+                                    .NumberFormat('id-ID', {
+                                        style: 'currency',
+                                        currency: 'IDR'
+                                    })
+                                    .format(number);
                             }
                         </script>
                     </div>
@@ -143,6 +155,46 @@ $plat = $_GET['plat'];
                         </form>
                     </div>
                 </div>
+
+                <section class="my-3">
+                    <h4>Data Peminjaman <?= $plat ?></h4>
+                    <?php
+                    $query = "SELECT
+                                tbl_rental_rikza.no_trx_rikza as trx,
+                                tbl_pelanggan_rikza.nama_rikza as peminjam,
+                                tbl_mobil_rikza.nama_mobil_rikza as mobil,
+                                tbl_rental_rikza.tgl_rental_rikza as tgl,
+                                tbl_rental_rikza.jam_rental_rikza as jam,
+                                tbl_rental_rikza.harga_rikza as harga,
+                                tbl_rental_rikza.lama_rikza as lama,
+                                tbl_rental_rikza.total_bayar_rikza as bayar
+                            FROM
+                                tbl_rental_rikza
+                            INNER JOIN
+                                tbl_pelanggan_rikza ON tbl_pelanggan_rikza.nik_ktp_rikza = tbl_rental_rikza.nik_ktp_rikza
+                            INNER JOIN
+                                tbl_mobil_rikza ON tbl_mobil_rikza.no_plat_rikza = tbl_rental_rikza.no_plat_rikza
+                            WHERE tbl_rental_rikza.no_plat_rikza = '$plat'";
+                    $trxs = mysqli_query($link, $query);
+                    while ($row = mysqli_fetch_assoc($trxs)) :
+                    ?>
+                        <div class="card rounded-0">
+                            <div class="card-body">
+                                <p><?= $row['trx'] ?></p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <h4><?= $row['mobil'] ?></h4>
+                                    <p><?= $row['peminjam'] ?></p>
+                                </div>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <small><?= $row['tgl'] . " | " . $row['jam'] ?></small>
+                                    <h3><?= $row['bayar'] ?></h3>
+                                </div>
+                            </div>
+                        </div>
+                    <?php
+                    endwhile;
+                    ?>
+                </section>
             </div>
         </div>
     </div>

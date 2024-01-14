@@ -42,5 +42,65 @@ if (!$role === "user") {
                 </div>
             <?php endwhile; ?>
         </div>
+        <section class="my-4">
+            <div class="card border border-0 shadow">
+                <div class="card-body">
+                    <h3>Data Penjualan</h3>
+                    <table class="table table-bordered table-hover">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">No.TRX</th>
+                                <th scope="col">Nama</th>
+                                <th scope="col">Mobil</th>
+                                <th scope="col">Tgl-Rental</th>
+                                <th scope="col">Jam-Rental</th>
+                                <th scope="col">Harga</th>
+                                <th scope="col">Lama</th>
+                                <th scope="col">Total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php
+                            include("config/connect.php");
+                            $query = "SELECT
+                                                tbl_rental_rikza.no_trx_rikza as trx,
+                                                tbl_pelanggan_rikza.nama_rikza as peminjam,
+                                                tbl_mobil_rikza.nama_mobil_rikza as mobil,
+                                                tbl_rental_rikza.tgl_rental_rikza as tgl,
+                                                tbl_rental_rikza.jam_rental_rikza as jam,
+                                                tbl_rental_rikza.harga_rikza as harga,
+                                                tbl_rental_rikza.lama_rikza as lama,
+                                                tbl_rental_rikza.total_bayar_rikza as bayar
+                                            FROM
+                                                tbl_rental_rikza
+                                            INNER JOIN
+                                                tbl_pelanggan_rikza ON tbl_pelanggan_rikza.nik_ktp_rikza = tbl_rental_rikza.nik_ktp_rikza
+                                            INNER JOIN
+                                                tbl_mobil_rikza ON tbl_mobil_rikza.no_plat_rikza = tbl_rental_rikza.no_plat_rikza";
+                            $trxs = mysqli_query($link, $query);
+                            $no = 1;
+                            while ($data = mysqli_fetch_assoc($trxs)) :
+                            ?>
+                                <tr>
+                                    <th scope="row"><?= $no++ ?></th>
+                                    <td><?= $data['trx'] ?></td>
+                                    <td><?= $data['peminjam'] ?></td>
+                                    <td><?= $data['mobil'] ?></td>
+                                    <td><?= $data['tgl'] ?></td>
+                                    <td><?= $data['jam'] ?></td>
+                                    <td><?= $data['harga'] ?></td>
+                                    <td><?= $data['lama'] ?></td>
+                                    <td><?= $data['bayar'] ?></td>
+                                </tr>
+                            <?php
+                            endwhile;
+                            ?>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </section>
     </div>
 </main>

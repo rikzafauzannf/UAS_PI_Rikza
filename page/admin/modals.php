@@ -95,11 +95,12 @@ while ($data = mysqli_fetch_assoc($queryLoopdata)) :
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="UpdateMobile<?= str_replace(' ', '', $data['no_plat_rikza']) ?>Label">Update Data Mobil</h1>
+                    <h1 class="modal-title fs-5" id="UpdateMobile<?= str_replace(' ', '', $data['no_plat_rikza']) ?>Label">Update Data Mobil <?= $data['no_plat_rikza'] ?> </h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form action="?logic=logic&crud=addMobil" method="post">
+                    <form action="?logic=logic&crud=editMobil" method="post">
+                        <input type="hidden" name="idPlat" class="form-conteol" value="<?= $data['no_plat_rikza'] ?>">
                         <div class="row g-3">
                             <div class="col-md-12">
                                 <label for="noplat" class="form-label">No-Plat</label>
@@ -107,17 +108,22 @@ while ($data = mysqli_fetch_assoc($queryLoopdata)) :
                             </div>
                             <div class="col-md-12">
                                 <label for="mobil" class="form-label">Mobil</label>
-                                <input type="text" name="mobil" id="mobil" placeholder="Masukan Nama Mobil" class="form-control">
+                                <input type="text" name="mobil" id="mobil" placeholder="Masukan Nama Mobil" class="form-control" value="<?= $data['nama_mobil_rikza'] ?>">
                             </div>
                             <div class="col-md-12">
                                 <label for="brand" class="form-label">Brand</label>
-                                <input type="text" name="brand" id="brand" placeholder="Masukan Brand Mobil" class="form-control">
+                                <input type="text" name="brand" id="brand" placeholder="Masukan Brand Mobil" class="form-control" value="<?= $data['brand_mobil_rikza'] ?> ">
                             </div>
                             <div class="col-md-12">
                                 <label for="transmisi" class="form-label">Type Transmisi</label>
                                 <select name="transmisi" id="transmisi" class="form-select">
-                                    <option value="Manual">Manual</option>
-                                    <option value="Matic">Matic</option>
+
+                                    <option value="Manual" <?php if ($data['tipe_transmisi_rikza'] == "Manual") {
+                                                                echo ("selected");
+                                                            } ?>>Manual</option>
+                                    <option value="Matic" <?php if ($data['tipe_transmisi_rikza'] == "Matic") {
+                                                                echo ("selected");
+                                                            } ?>>Matic</option>
                                 </select>
                             </div>
                         </div>
@@ -125,7 +131,7 @@ while ($data = mysqli_fetch_assoc($queryLoopdata)) :
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="submit" name="insert" class="btn btn-primary">Simpan</button>
+                    <button type="submit" name="edit" class="btn btn-primary">Simpan</button>
                     </form>
                 </div>
             </div>

@@ -23,6 +23,8 @@ if ($_GET['role'] == "admin") {
         include("./logic/queryUser.php");
     } elseif ($_GET['crud'] == "addMobil") { // add mobil
         include("./logic/queryMobil.php");
+    } elseif ($_GET['crud'] == "editMobil") { // add mobil
+        include("./logic/queryMobil.php");
     } elseif ($_GET['crud'] == "deleteMobil") { // delete mobil
         include("./logic/queryMobil.php");
     } elseif ($_GET['crud'] == "Rental") { // add mobil

@@ -13,3 +13,5 @@ if (!$link) {
 }
 
 mysqli_set_charset($link, "utf8");
+
+$baseUrl = "http:localhost:8000/UAS_PI_Rikza/";
