@@ -18,7 +18,7 @@ if (!$role === "admin") {
         <section class="my-2">
             <div class="row">
                 <div class="col-md-8">
-                    <div class="card border border-0 shadow" id="datatransaksi">
+                    <div class="card bg-gradient border border-0 shadow" id="datatransaksi">
                         <div class="card-body">
                             <table class="table table-bordered table-hover">
                                 <thead>
@@ -76,10 +76,10 @@ if (!$role === "admin") {
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <div class="card border border-0 shadow" id="dataUser">
+                    <div class="card bg-gradient border border-0 shadow" id="dataUser">
                         <div class="card-body">
                             <div class="w-100 d-flex justify-content-between align-items-center">
-                                <h3 class="text-secondary fw-bold">Data User</h3>
+                                <h3 class=" fw-bold">Data User</h3>
                                 <button type="button" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#DataUser">
                                     Tambahkan User
                                 </button>
@@ -107,7 +107,7 @@ if (!$role === "admin") {
                                                                         echo 'text-bg-success';
                                                                     }
                                                                     ?>"><?= $row['level_rikza'] ?></span>
-                                                <p class="fw-bold"><span class="text-secondary fw-light">Username >> </span><?= $row['username_rikza'] ?><br><span class="text-secondary fw-light">Nama Lengkap >> </span><?= $row['nama_lengkap_rikza'] ?></p>
+                                                <p class="fw-bold"><span class=" fw-light">Username >> </span><?= $row['username_rikza'] ?><br><span class=" fw-light">Nama Lengkap >> </span><?= $row['nama_lengkap_rikza'] ?></p>
                                                 <a href="?logic=logic&crud=deluser&idfxt=<?= $row['id_user_rikza'] ?>" class="btn btn-md btn-warning mt-1 w-100">Block</a>
                                             </div>
                                         </div>
@@ -123,10 +123,10 @@ if (!$role === "admin") {
         <section class="my-4">
             <div class="row g-3">
                 <div class="col-md-12">
-                    <div class="card border border-0 shadow" id="dataMobil">
+                    <div class="card bg-gradient border border-0 shadow" id="dataMobil">
                         <div class="card-body">
                             <div class="w-100 d-flex justify-content-between align-items-center mb-3">
-                                <h3 class="text-secondary fw-bold">Data Mobil</h3>
+                                <h3 class=" fw-bold">Data Mobil</h3>
                                 <button type="button" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#DataMobil">
                                     Tambahkan Mobil
                                 </button>
@@ -168,9 +168,9 @@ if (!$role === "admin") {
                     </div>
                 </div>
                 <div class="col-md-12">
-                    <div class="card border border-0 shadow" id="dataPelanggan">
+                    <div class="card bg-gradient border border-0 shadow" id="dataPelanggan">
                         <div class="card-body">
-                            <h3 class="text-secondary fw-bold">Data Pelanggan</h3>
+                            <h3 class=" fw-bold">Data Pelanggan</h3>
 
                             <table class="table table-bordered table-hover">
                                 <thead>

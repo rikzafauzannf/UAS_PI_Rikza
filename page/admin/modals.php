@@ -2,7 +2,7 @@
 <!-- Modal -->
 <div class="modal fade" id="DataUser" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="DataUserLabel" aria-hidden="true">
     <div class="modal-dialog">
-        <div class="modal-content">
+        <div class="modal-content border border-0 bg-gradient">
             <div class="modal-header">
                 <h1 class="modal-title fs-5" id="DataUserLabel">Tambahkan Data User</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -44,7 +44,7 @@
 <!-- Modal -->
 <div class="modal fade" id="DataMobil" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="DataMobilLabel" aria-hidden="true">
     <div class="modal-dialog">
-        <div class="modal-content">
+        <div class="modal-content border border-0 bg-gradient">
             <div class="modal-header">
                 <h1 class="modal-title fs-5" id="DataMobilLabel">Tambahkan Data Mobil</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -93,7 +93,7 @@ while ($data = mysqli_fetch_assoc($queryLoopdata)) :
 ?>
     <div class="modal fade" id="UpdateMobile<?= str_replace(' ', '', $data['no_plat_rikza']) ?>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="UpdateMobile<?= str_replace(' ', '', $data['no_plat_rikza']) ?>Label" aria-hidden="true">
         <div class="modal-dialog">
-            <div class="modal-content">
+            <div class="modal-content border border-0 bg-gradient">
                 <div class="modal-header">
                     <h1 class="modal-title fs-5" id="UpdateMobile<?= str_replace(' ', '', $data['no_plat_rikza']) ?>Label">Update Data Mobil <?= $data['no_plat_rikza'] ?> </h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>

@@ -22,7 +22,7 @@ if (!$role === "user") {
             while ($row = mysqli_fetch_assoc($queryMobil)) :
             ?>
                 <div class="col-md-4">
-                    <div class="card border border-0 shadow">
+                    <div class="card border border-0 shadow bg-gradient">
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-md-12">
@@ -43,7 +43,7 @@ if (!$role === "user") {
             <?php endwhile; ?>
         </div>
         <section class="my-4">
-            <div class="card border border-0 shadow">
+            <div class="card border border-0 shadow bg-gradient">
                 <div class="card-body">
                     <h3>Data Rental Mobil</h3>
                     <table class="table table-bordered table-hover">

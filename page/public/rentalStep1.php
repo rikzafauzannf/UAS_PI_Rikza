@@ -11,7 +11,7 @@ $plat = $_GET['plat'];
                 $queryData = mysqli_query($link, "SELECT * FROM `tbl_mobil_rikza` WHERE tbl_mobil_rikza.no_plat_rikza = '$plat'");
                 while ($row = mysqli_fetch_assoc($queryData)) :
                 ?>
-                    <div class="card border border-0 shadow mb-3">
+                    <div class="card border border-0 shadow mb-3 bg-gradient">
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-md-12">
@@ -28,7 +28,7 @@ $plat = $_GET['plat'];
                 endwhile;
                 ?>
 
-                <div class="card border border-0 shadow">
+                <div class="card border border-0 shadow bg-gradient">
                     <div class="card-body">
                         <h5>Form Rental Mobil</h5>
                         <form action="?logic=logic&crud=Rental" method="post">
@@ -126,7 +126,7 @@ $plat = $_GET['plat'];
             </div>
             <div class="col-md-6">
                 <h1 class="fw-bold">! JIKA BELUM ADA DATA PENYEWA</h1>
-                <div class="card border border-0 shadow">
+                <div class="card border border-0 shadow bg-gradient">
                     <div class="card-body">
                         <h5>Form Pengisian Data Diri</h5>
                         <form action="?logic=logic&crud=addPenyewa" method="post">
@@ -158,8 +158,9 @@ $plat = $_GET['plat'];
 
                 <section class="my-3">
                     <h4>Data Peminjaman <?= $plat ?></h4>
-                    <?php
-                    $query = "SELECT
+                    <div class="overflow-y-scroll" style="height: 400px;">
+                        <?php
+                        $query = "SELECT
                                 tbl_rental_rikza.no_trx_rikza as trx,
                                 tbl_pelanggan_rikza.nama_rikza as peminjam,
                                 tbl_mobil_rikza.nama_mobil_rikza as mobil,
@@ -174,26 +175,28 @@ $plat = $_GET['plat'];
                                 tbl_pelanggan_rikza ON tbl_pelanggan_rikza.nik_ktp_rikza = tbl_rental_rikza.nik_ktp_rikza
                             INNER JOIN
                                 tbl_mobil_rikza ON tbl_mobil_rikza.no_plat_rikza = tbl_rental_rikza.no_plat_rikza
-                            WHERE tbl_rental_rikza.no_plat_rikza = '$plat'";
-                    $trxs = mysqli_query($link, $query);
-                    while ($row = mysqli_fetch_assoc($trxs)) :
-                    ?>
-                        <div class="card rounded-0">
-                            <div class="card-body">
-                                <p><?= $row['trx'] ?></p>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <h4><?= $row['mobil'] ?></h4>
-                                    <p><?= $row['peminjam'] ?></p>
-                                </div>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <small><?= $row['tgl'] . " | " . $row['jam'] ?></small>
-                                    <h3><?= $row['bayar'] ?></h3>
+                            WHERE tbl_rental_rikza.no_plat_rikza = '$plat'
+                            ORDER BY tgl DESC";
+                        $trxs = mysqli_query($link, $query);
+                        while ($row = mysqli_fetch_assoc($trxs)) :
+                        ?>
+                            <div class="card rounded-0 shadow">
+                                <div class="card-body">
+                                    <p><?= $row['trx'] ?></p>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <h4><?= $row['mobil'] ?></h4>
+                                        <p><?= $row['peminjam'] ?></p>
+                                    </div>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <small><?= $row['tgl'] . " | " . $row['jam'] ?></small>
+                                        <h3><?= $row['bayar'] ?></h3>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    <?php
-                    endwhile;
-                    ?>
+                        <?php
+                        endwhile;
+                        ?>
+                    </div>
                 </section>
             </div>
         </div>
