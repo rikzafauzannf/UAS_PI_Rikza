@@ -27,8 +27,8 @@ if (!$role === "admin") {
                                         <th scope="col">No.TRX</th>
                                         <th scope="col">Nama</th>
                                         <th scope="col">Mobil</th>
-                                        <th scope="col">Tgl-Rental</th>
-                                        <th scope="col">Jam-Rental</th>
+                                        <th scope="col">Tanggal</th>
+                                        <th scope="col">Jam</th>
                                         <th scope="col">Harga</th>
                                         <th scope="col">Lama</th>
                                         <th scope="col">Total</th>
