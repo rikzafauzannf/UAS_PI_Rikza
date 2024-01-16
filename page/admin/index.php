@@ -86,12 +86,13 @@ if (!$role === "admin") {
                             </div>
                             <hr class="text-primary">
                             <div class="row">
-                                <?php
-                                $queryUser = mysqli_query($link, "SELECT * FROM `tbl_user_rikza` ORDER BY level_rikza DESC");
-                                while ($row = mysqli_fetch_assoc($queryUser)) :
-                                ?>
-                                    <div class="col-md-12 my-2">
-                                        <div class="card
+                                <div class="overflow-y-scroll" style="height: 500px;">
+                                    <?php
+                                    $queryUser = mysqli_query($link, "SELECT * FROM `tbl_user_rikza` ORDER BY level_rikza ASC");
+                                    while ($row = mysqli_fetch_assoc($queryUser)) :
+                                    ?>
+                                        <div class="col-md-12 my-2">
+                                            <div class="card
                                         <?php
                                         if ($row['level_rikza'] == 'admin') {
                                             echo 'border-primary';
@@ -99,20 +100,21 @@ if (!$role === "admin") {
                                             echo 'border-success';
                                         }
                                         ?> shadow-sm">
-                                            <div class="card-body">
-                                                <span class="badge <?php
-                                                                    if ($row['level_rikza'] == 'admin') {
-                                                                        echo 'text-bg-primary';
-                                                                    } else {
-                                                                        echo 'text-bg-success';
-                                                                    }
-                                                                    ?>"><?= $row['level_rikza'] ?></span>
-                                                <p class="fw-bold"><span class=" fw-light">Username >> </span><?= $row['username_rikza'] ?><br><span class=" fw-light">Nama Lengkap >> </span><?= $row['nama_lengkap_rikza'] ?></p>
-                                                <a href="?logic=logic&crud=deluser&idfxt=<?= $row['id_user_rikza'] ?>" class="btn btn-md btn-warning mt-1 w-100">Block</a>
+                                                <div class="card-body">
+                                                    <span class="badge <?php
+                                                                        if ($row['level_rikza'] == 'admin') {
+                                                                            echo 'text-bg-primary';
+                                                                        } else {
+                                                                            echo 'text-bg-success';
+                                                                        }
+                                                                        ?>"><?= $row['level_rikza'] ?></span>
+                                                    <p class="fw-bold"><span class=" fw-light">Username >> </span><?= $row['username_rikza'] ?><br><span class=" fw-light">Nama Lengkap >> </span><?= $row['nama_lengkap_rikza'] ?></p>
+                                                    <a href="?logic=logic&crud=deluser&idfxt=<?= $row['id_user_rikza'] ?>" class="btn btn-md btn-warning mt-1 w-100">Block</a>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                <?php endwhile; ?>
+                                    <?php endwhile; ?>
+                                </div>
                             </div>
                         </div>
                     </div>
