@@ -1,36 +1,35 @@
 <?php
-session_start();
-if ($_GET['role'] == "admin") {
+if (isset($_GET['role']) && $_GET['role'] == "admin") {
     // admin
     include("page/admin/index.php");
-} elseif ($_GET['role'] == "user") {
+} elseif (isset($_GET['role']) && $_GET['role'] == "user") {
     // user
-    if ($_GET['rental'] == "dataPelanggan") {
+    if (isset($_GET['rental']) && $_GET['rental'] == "dataPelanggan") {
         include("./page/public/rentalStep1.php");
     } else {
         include("page/public/index.php");
     }
-} elseif ($_GET['logic'] == "logic") { // logic
-    if ($_GET['login'] == "login") { // login
+} elseif (isset($_GET['logic']) && $_GET['logic'] == "logic") { // logic
+    if (isset($_GET['login']) && $_GET['login'] == "login") { // login
         include("./logic/login.php");
-    } elseif ($_GET['logout'] == "logout") {
+    } elseif (isset($_GET['logout']) && $_GET['logout'] == "logout") {
         include("./logic/logout.php");
-    } elseif ($_GET['crud'] == "adduser") { // tambah user
+    } elseif (isset($_GET['crud']) && $_GET['crud'] == "adduser") { // tambah user
         include("./logic/queryUser.php");
-    } elseif ($_GET['crud'] == "deluser") { // delete user
+    } elseif (isset($_GET['crud']) && $_GET['crud'] == "deluser") { // delete user
         include("./logic/queryUser.php");
-    } elseif ($_GET['crud'] == "addPenyewa") { // add penyewa
+    } elseif (isset($_GET['crud']) && $_GET['crud'] == "addPenyewa") { // add penyewa
         include("./logic/queryUser.php");
-    } elseif ($_GET['crud'] == "addMobil") { // add mobil
+    } elseif (isset($_GET['crud']) && $_GET['crud'] == "addMobil") { // add mobil
         include("./logic/queryMobil.php");
-    } elseif ($_GET['crud'] == "editMobil") { // add mobil
+    } elseif (isset($_GET['crud']) && $_GET['crud'] == "editMobil") { // add mobil
         include("./logic/queryMobil.php");
-    } elseif ($_GET['crud'] == "deleteMobil") { // delete mobil
+    } elseif (isset($_GET['crud']) && $_GET['crud'] == "deleteMobil") { // delete mobil
         include("./logic/queryMobil.php");
-    } elseif ($_GET['crud'] == "Rental") { // add mobil
+    } elseif (isset($_GET['crud']) && $_GET['crud'] == "Rental") { // add mobil
         include("./logic/queryRental.php");
     }
-} elseif ($_GET['out'] == "trueOut") {
+} elseif (isset($_GET['out']) && $_GET['out'] == "trueOut") {
     include("./page/auth/index.php");
 } else {
     include("./page/auth/index.php");
