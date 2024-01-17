@@ -12,7 +12,7 @@ if (!$role === "user") {
         <p>Selamat Bekerja untuk kemajuan dealer <b>RentalMobil</b></p>
     </div>
 </div>
-<main class="my-5">
+<main class="my-5" id="listmobil">
     <div class="container">
         <h2 class="fw-bold">*List Mobil</h2>
         <div class="row">
@@ -42,7 +42,7 @@ if (!$role === "user") {
                 </div>
             <?php endwhile; ?>
         </div>
-        <section class="my-4">
+        <section class="my-4" id="datarental">
             <div class="card border border-0 shadow bg-gradient">
                 <div class="card-body">
                     <h3>Data Rental Mobil</h3>
